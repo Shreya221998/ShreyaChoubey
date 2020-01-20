@@ -1,0 +1,14 @@
+Steps to create VPC
+login to the aws console and navigate to the vpc console and select your vpcs from sidebar and click on create vpc
+Enter VPC CIDR details as belowName tag: MyVPC
+IPv4 CIDR block* : 10.0.0.0/16
+Click on yes create button 
+
+Steps to create public subnet
+Make sure to select “MyVPC”  under “VPC”  drop down menu and enter 10.0.1.0/24 in “IPv4 CIDR block” for public subnet.
+
+Steps to create private subnet
+Now create Private subnet with CIDR 10.0.2.0/24
+
+
+
