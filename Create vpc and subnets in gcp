@@ -1,0 +1,9 @@
+Steps to create Vpc network in gcp
+
+1 Go to the vpc network page in the google cloud console 
+2 Click on create vpc network 
+3 Enter a name for the network
+4 Choose automatic for the subnet creation mode
+5 In the firewall rules select one or more predefined firewall rules 
+6 Select the dynamic routing mode for the vpc network
+7 click create.
