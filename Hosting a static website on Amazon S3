@@ -1,5 +1,0 @@
-Steps to host a static website on amazon S3 
-
-1 First we need to create an amazon S3 bucket for website hosting and then upload your website content on to the bucket.
-2 The bucket should have public read accesss so that everyone in the world can access it.
-3 this website is then available to the aws region specific endpoint of the bucket.
