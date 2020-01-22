@@ -1,2 +1,0 @@
-find/home/username -name "*.err"
-the above command finds all the files with .err extension in home/username directory
