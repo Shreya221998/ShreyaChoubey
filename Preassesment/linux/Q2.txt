@@ -1,0 +1,3 @@
+Open the terminal in linux
+In that type the command below 
+find . -type f -name "*.txt"
