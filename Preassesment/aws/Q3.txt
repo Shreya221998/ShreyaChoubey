@@ -1,0 +1,16 @@
+To launch a new EC2 instance from an Amazon Machine Image (AMI), do the following:
+
+Open the EC2 console.
+Note: Be sure to select the AWS region you want to launch the instance in.
+From the navigation bar, choose AMIs.
+Find the AMI you want to use to launch a new instance. To begin, open the menu next to the search bar, and then choose one of the following:
+If the AMI you’re using is one that you created, select Owned by me.
+If the AMI you’re using is a public AMI, select Public images.
+If the AMI you’re using is a private image that someone else shared with you, select Private images.
+Note: The search bar automatically provides filtering options, as well as automatically matching AMI IDs.
+Select the AMI, and then choose Launch.
+Choose an instance type, and then choose Next: Configure Instance Details.
+Review the Instance Details, and then choose Review and Launch.
+Choose your preferred boot volume, choose Next, and then choose Launch.
+Select an existing key pair or create a new key pair, select the acknowledge agreement box, and then choose Launch Instances.
+Choose View Instances to check the status of your instance.
