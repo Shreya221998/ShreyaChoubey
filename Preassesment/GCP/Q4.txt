@@ -1,0 +1,15 @@
+Q4.Steps to create GCE VM and deploy nginx.
+
+1.go to GCP console.
+
+2.under compute>vm instances>create instance.
+
+3. Name the vm instance and select appropriate configuration .
+
+4.click on create instance.
+
+5.Open the cloud shell.
+
+6.write - sudo apt-get update for updates.
+
+7.to install nginx-sudo apt-get install nginx
