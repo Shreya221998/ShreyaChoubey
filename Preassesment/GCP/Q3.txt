@@ -1,0 +1,11 @@
+Steps to create a bucket 
+ Open the cloud storage browser in the google cloud console 
+ Click on create bucket to open the bucket creation form 
+   Name your bucket 
+   Choose a default storage class 
+   Choose how to control access to objects
+ Click on done.
+  
+To create a bucket command- ?gsutil mb gs://newBucket
+
+To transfer file from local to GCS command- ?gsutil cp [local-file-path] gs://newBucket
