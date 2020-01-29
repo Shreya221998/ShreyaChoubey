@@ -1,0 +1,51 @@
+import time
+import boto3
+region = 'us-east-1'
+instances = ['i-00d1e939dd2bc3869']
+ec2 = boto3.client('ec2', region_name=region)
+
+ec2_1=boto3.resource('ec2', region_name=region)
+
+vpc = ec2_1.create_vpc(CidrBlock='10.0.0.0/26')
+# we can assign a name to vpc, or any resource, by using tag
+vpc.create_tags(Tags=[{"Key":"Name", "Value":"dontdeletesh"}])
+vpc.wait_until_available()
+print(vpc.id)
+
+public-1 = ec2_1.create_subnet(CidrBlock='10.0.0.32/28', VpcId=vpc.id)
+public-3= ec2_1.create_subnet(CidrBlock='10.0.0.48/28', VpcId=vpc.id)
+private-1 = ec2_1.create_subnet(CidrBlock='10.0.0.0/28', VpcId=vpc.id)
+private-3 = ec2_1.create_subnet(CidrBlock='10.0.0.16/28', VpcId=vpc.id)
+
+print(public-1.id)
+print(public-2.id)
+
+print(private-1.id)
+print(private-2.id)
+
+intGateway  = ec2_1.create_internet_gateway()
+intGateway.attach_to_vpc( VpcId = vpc.id )
+
+# Create another route table for Public traffic
+public-rt = ec2_1.create_route_table( VpcId = vpc.id )
+public-rt.associate_with_subnet( SubnetId = Pub1subnet.id )
+public-rt.associate_with_subnet( SubnetId = Pub2subnet.id )
+
+# Create another route table for Private traffic
+private-rt = ec2_1.create_route_table( VpcId = vpc.id )
+private-rt.associate_with_subnet( SubnetId = Priv1subnet.id )
+private-rt.associate_with_subnet( SubnetId = Priv2subnet.id )
+
+# Create a route for internet traffic to flow out
+intRoute = ec2.create_route( RouteTableId = public-rt.id , DestinationCidrBlock = '0.0.0.0/0' , GatewayId = intGateway.id )
+
+eip_for_nat_gateway = ec2.allocate_address(Domain='vpc')
+allocation_id = eip_for_nat_gateway['AllocationId']
+
+# create NAT Gateway and associate with Elastic IP
+nat_gw = ec2.create_nat_gateway(SubnetId=public-1.id,AllocationId=allocation_id)
+nat_gw_id = nat_gw['NatGateway']['NatGatewayId']
+time.sleep(100)
+
+# Create a default route pointing to NAT Gateway for 2xPrivate Subnets
+ec2.create_route(RouteTableId=private-rt.id,DestinationCidrBlock='0.0.0.0/0',NatGatewayId=nat_gw_id)
